@@ -2,23 +2,23 @@ import { Emblem } from "./brand/emblem";
 
 const COMMITMENTS = [
   {
-    title: "Hecho al momento",
-    body: "Cocina criolla preparada al momento, con el sabor de siempre.",
-    icon: <PlateIcon />,
+    title: "Calidad garantizada",
+    body: "Repuestos seleccionados para que frenes con seguridad y tranquilidad.",
+    icon: <DiscIcon />,
   },
   {
     title: "Delivery y retiro",
-    body: "Pide en línea y recíbelo en tu puerta o retíralo en tu sucursal Casa del Camba.",
+    body: "Enviamos en Santa Cruz o retiras en nuestro local de Feria Barrio Lindo.",
     icon: <ScooterIcon />,
   },
   {
     title: "Precios claros",
-    body: "Precios claros en bolivianos y porciones generosas, sin sorpresas al pagar.",
+    body: "Precios en bolivianos y atención directa, sin sorpresas al pagar.",
     icon: <TagIcon />,
   },
   {
     title: "Cerca de ti",
-    body: "13 sucursales en Santa Cruz y atención directa por WhatsApp.",
+    body: "Atención por WhatsApp para confirmar stock, compatibilidad y entrega.",
     icon: <ChatIcon />,
   },
 ];
@@ -30,11 +30,11 @@ export function Commitments() {
         <Emblem size={40} className="mx-auto text-accent-soft" />
         <span className="eyebrow mt-4 block text-accent-soft">Nuestro compromiso</span>
         <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
-          Tradición camba, bien servida
+          Frenos, bien atendidos
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-light/75">
-          Casa del Camba: tradición camba desde 1986, hecha al momento y servida en 13 sucursales
-          de Santa Cruz.
+          FRENOSHOP: repuestos de freno con calidad y precio, con atención directa y
+          entrega en Santa Cruz.
         </p>
       </div>
 
@@ -42,7 +42,7 @@ export function Commitments() {
         {COMMITMENTS.map((c) => (
           <div
             key={c.title}
-            className="flex items-start gap-4 rounded-2xl border border-[rgba(255,204,4,0.25)] bg-[rgba(255,255,255,0.05)] p-6 text-left transition hover:border-accent-soft/60 hover:bg-[rgba(255,255,255,0.08)]"
+            className="flex items-start gap-4 rounded-2xl border border-[rgba(245,179,1,0.25)] bg-[rgba(255,255,255,0.05)] p-6 text-left transition hover:border-accent-soft/60 hover:bg-[rgba(255,255,255,0.08)]"
           >
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent-soft">
               {c.icon}
@@ -58,14 +58,13 @@ export function Commitments() {
   );
 }
 
-function PlateIcon() {
+function DiscIcon() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 17h16" />
-      <path d="M5 17a7 7 0 0 1 14 0" />
-      <path d="M12 10V8" />
-      <path d="M10.5 8h3" />
-      <path d="M3 20h18" />
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="9" />
+      <circle cx="12" cy="12" r="4.5" />
+      <circle cx="12" cy="12" r="1.3" />
+      <path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4" />
     </svg>
   );
 }

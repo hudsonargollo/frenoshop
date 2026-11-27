@@ -20,7 +20,7 @@ export type CheckoutDefaults = {
 };
 
 const inputCls =
-  "w-full rounded-lg border border-[var(--line-strong)] bg-surface px-4 py-3 text-sm text-ink outline-none transition placeholder:text-muted/60 focus:border-accent focus:ring-2 focus:ring-[rgba(255,204,4,0.22)]";
+  "w-full rounded-lg border border-[var(--line-strong)] bg-surface px-4 py-3 text-sm text-ink outline-none transition placeholder:text-muted/60 focus:border-accent focus:ring-2 focus:ring-[rgba(245,179,1,0.22)]";
 const labelCls = "mb-1.5 block text-xs font-medium uppercase tracking-[0.1em] text-muted";
 
 const NOTICES = {
@@ -74,7 +74,7 @@ export function CheckoutForm({
   const isPickup = fulfillment === "PICKUP";
   const baseShipping = isPickup ? 0 : shippingFor(subtotal, shippingRules);
 
-  // ---- Club Camba: what this cart earns, and any full card to spend ----
+  // ---- Club Frenoshop: what this cart earns, and any full card to spend ----
   const [loyalty, setLoyalty] = useState<LoyaltyCartPreview | null>(null);
   const [redeemId, setRedeemId] = useState<string | null>(null);
   const cartKey = items.map((i) => `${i.id}:${i.quantity}`).join(",");
@@ -144,7 +144,7 @@ export function CheckoutForm({
           href="/shop"
           className="mt-6 inline-block rounded-full bg-gradient-to-r from-accent-soft to-accent px-8 py-3 text-sm font-medium text-brand"
         >
-          Explorar el menú
+          Explorar el catálogo
         </Link>
       </div>
     );
@@ -243,7 +243,7 @@ export function CheckoutForm({
                   current={fulfillment}
                   onSelect={setFulfillment}
                   title="Delivery a domicilio"
-                  desc={shippingRules.deliveryTime || "Entrega en moto desde esta sucursal"}
+                  desc={shippingRules.deliveryTime || "Envío desde este local"}
                 />
               )}
               {branch.pickupEnabled && (
@@ -336,7 +336,7 @@ export function CheckoutForm({
 
         {/* Order summary — sticky/locked on desktop */}
         <aside className="lg:sticky lg:top-24 lg:self-start">
-          <div className="rounded-2xl border border-[var(--line-strong)] bg-surface/80 p-6 shadow-[0_24px_60px_-40px_rgba(29,58,14,0.5)]">
+          <div className="rounded-2xl border border-[var(--line-strong)] bg-surface/80 p-6 shadow-[0_24px_60px_-40px_rgba(8,8,8,0.5)]">
             <h2 className="font-display text-xl font-semibold text-ink">Resumen del pedido</h2>
 
             <ul className="mt-5 max-h-72 space-y-4 overflow-y-auto border-b border-[var(--line)] pb-5 pr-1 text-sm">
@@ -462,7 +462,7 @@ export function CheckoutForm({
               {submitting ? "Procesando pedido…" : "Confirmar pedido"}
             </button>
             <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-xs text-muted">
-              <LockIcon /> Pago seguro y encriptado · Casa del Camba
+              <LockIcon /> Pago seguro y encriptado · FRENOSHOP
             </p>
           </div>
         </aside>

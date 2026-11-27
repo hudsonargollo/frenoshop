@@ -8,22 +8,31 @@ import { parseProductFilters } from "@/lib/filters";
 import { ShopBrowser } from "@/components/shop/shop-browser";
 import { Emblem } from "@/components/brand/emblem";
 
-// Storefront copy overrides where the category name alone doesn't sell the dish.
+// Storefront copy for the brake-parts categories.
 const CATEGORY_COPY: Record<string, { title: string; description: string }> = {
-  "platos-tipicos-y-combinados": {
-    title: "Platos típicos y Combinados",
-    description:
-      "Majao de pato y charque, picantes, silpancho y los buffets de la casa con todas las guarniciones cambas.",
+  "pastillas-de-freno": {
+    title: "Pastillas de freno",
+    description: "Pastillas de freno para autos y camionetas. Confirma marca, modelo, año y motor para elegir la correcta.",
   },
-  parrilla: {
-    title: "Parrilla",
-    description:
-      "Bife de chorizo, churrasco y parrillas para compartir, con arroz con queso, yuca frita y llajua.",
+  "discos-y-tambores": {
+    title: "Discos y tambores",
+    description: "Discos ventilados, sólidos y tambores de freno para distintos vehículos.",
   },
-  empanadas: {
-    title: "Empanadas",
-    description:
-      "De carne y de keperí, recién hechas y acompañadas con salsa tártara. El clásico camba.",
+  "cilindros-y-bombas": {
+    title: "Cilindros y bombas",
+    description: "Cilindros maestros, bombas y actuadores para el sistema de frenos.",
+  },
+  "kits-y-sellos": {
+    title: "Kits y sellos",
+    description: "Kits de reparación, sellos y empaquetaduras para frenos.",
+  },
+  "mangueras-y-liquidos": {
+    title: "Mangueras y líquidos",
+    description: "Mangueras de freno, líquido DOT y accesorios para el sistema de frenos.",
+  },
+  accesorios: {
+    title: "Accesorios",
+    description: "Accesorios y herramientas para el mantenimiento de tus frenos.",
   },
 };
 
@@ -37,7 +46,7 @@ export async function generateMetadata({
   return {
     title: copy?.title ?? cat.name,
     description:
-      copy?.description ?? cat.description ?? `Pide ${cat.name.toLowerCase()} en Casa del Camba.`,
+      copy?.description ?? cat.description ?? `Explora ${cat.name.toLowerCase()} en FRENOSHOP.`,
     alternates: { canonical: `/shop/${cat.slug}` },
   };
 }
@@ -63,7 +72,6 @@ export default async function CategoryPage({
     parsed.q || parsed.material || parsed.minPrice || parsed.maxPrice || parsed.onSale || parsed.inStock
   );
 
-  // Category with no products yet → friendly "coming soon" card.
   if (products.length === 0 && !hasFilters) {
     return (
       <div className="mx-auto max-w-2xl px-5 py-24 text-center">
@@ -73,15 +81,15 @@ export default async function CategoryPage({
           Próximamente
         </h1>
         <p className="relative mx-auto mt-2 max-w-md text-muted">
-          Estamos preparando nuestra selección de {cat.name.toLowerCase()}. Déjanos tu correo y te
-          avisamos en cuanto llegue.
+          Estamos cargando nuestra selección de {cat.name.toLowerCase()}. Déjanos tu correo y te
+          avisamos en cuanto llegue, o escríbenos por WhatsApp para consultar disponibilidad.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Link
             href="/shop"
-            className="rounded-full bg-accent px-8 py-3 text-sm font-semibold text-brand-deep shadow-[0_14px_32px_-16px_rgba(255,204,4,0.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft"
+            className="rounded-full bg-accent px-8 py-3 text-sm font-semibold text-brand-deep shadow-[0_14px_32px_-16px_rgba(245,179,1,0.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft"
           >
-            Ver el menú
+            Ver el catálogo
           </Link>
         </div>
         <div className="mt-8">
@@ -94,7 +102,7 @@ export default async function CategoryPage({
 
   return (
     <ShopBrowser
-      eyebrow="El menú"
+      eyebrow="El catálogo"
       title={CATEGORY_COPY[cat.slug]?.title ?? cat.name}
       description={CATEGORY_COPY[cat.slug]?.description ?? cat.description}
       products={products}

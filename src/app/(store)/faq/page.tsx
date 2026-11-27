@@ -7,37 +7,37 @@ import { AccordionItem } from "@/components/ui/accordion-item";
 export const metadata: Metadata = {
   alternates: { canonical: "/faq" },
   title: "Preguntas frecuentes",
-  description: "Respuestas sobre pedidos, platos, delivery, retiro y pagos en Casa del Camba, Santa Cruz, Bolivia.",
+  description: "Respuestas sobre repuestos, compatibilidad, envíos y pagos en FRENOSHOP, Santa Cruz, Bolivia.",
 };
 
 const faqs = (DELIVERY_TIME: string) => [
   {
     q: "¿Cómo hago un pedido?",
-    a: "Elige tu sucursal, arma tu pedido desde el menú y confirma el pedido. Puedes pagar contra entrega o de forma segura en línea.",
+    a: "Explora el catálogo, elige el repuesto que necesitas y confirma el pedido. Si no sabes qué pieza corresponde a tu vehículo, escríbenos por WhatsApp con marca, modelo, año y motor.",
   },
   {
     q: "¿Qué métodos de pago aceptan?",
-    a: "Pago contra entrega en tu sucursal Casa del Camba, y pagos en línea con tarjeta o billetera a través de nuestras pasarelas.",
+    a: "Pago contra entrega y pagos en línea con tarjeta o billetera a través de nuestras pasarelas, cuando están habilitadas.",
   },
   {
-    q: "¿Cuánto tarda el delivery?",
-    a: `Hacemos delivery en Santa Cruz. Entrega estimada: ${DELIVERY_TIME}. El tiempo puede variar según la preparación, la demanda y la distancia. Cuidamos tu pedido desde la cocina hasta tu puerta. Si necesitas coordinar la entrega, escríbenos por WhatsApp.`,
+    q: "¿Cuánto tarda la entrega?",
+    a: `Entregamos en Santa Cruz. Tiempo estimado: ${DELIVERY_TIME}. El tiempo puede variar según disponibilidad y distancia. Si necesitas coordinar la entrega, escríbenos por WhatsApp.`,
   },
   {
-    q: "¿Puedo retirar en tienda?",
-    a: "Sí. Al finalizar el pedido elige retiro en sucursal y te avisamos por WhatsApp cuando esté listo, sin costo adicional.",
+    q: "¿Puedo retirar en el local?",
+    a: "Sí. Al finalizar el pedido elige retiro en tienda y pasa por Feria Barrio Lindo, Acronal B, pasillo D 316, sin costo adicional.",
   },
   {
-    q: "¿Tienen opciones para compartir?",
-    a: "Sí. Los buffets y parrillas para 2 o 4 personas están pensados para compartir. Mira los platos típicos y la parrilla del menú.",
+    q: "¿Cómo sé si la pieza es compatible con mi vehículo?",
+    a: "En cada producto indicamos la categoría y las especificaciones disponibles. Si tienes dudas, envíanos la marca, modelo, año y motor por WhatsApp y te confirmamos la compatibilidad antes de comprar.",
   },
   {
     q: "¿Cuál es la política de devoluciones?",
-    a: "Nos importa que disfrutes tu comida. Si tu pedido llega incompleto o en mal estado, contáctanos con tu número de pedido y cuéntanos qué pasó. Lo revisamos con cuidado y lo más rápido posible para coordinar contigo la solución más adecuada. Consulta Delivery y devoluciones.",
+    a: "Si recibes una pieza incorrecta o con fallas, contáctanos con tu número de pedido y cuéntanos qué pasó. Revisamos el caso y coordinamos contigo la solución. Consulta Envíos y devoluciones.",
   },
   {
-    q: "¿Entregan en mi zona?",
-    a: "Entregamos en Santa Cruz desde nuestras 13 sucursales. Si tienes dudas sobre tu dirección, consúltanos por WhatsApp antes de pedir.",
+    q: "¿Tienen el repuesto que busco?",
+    a: "El catálogo se está cargando. Si no encuentras tu pieza, escríbenos por WhatsApp: podemos consultar disponibilidad y avisarte cuando llegue.",
   },
 ];
 

@@ -17,7 +17,7 @@ import {
 type Action = (prev: SettingsState, fd: FormData) => Promise<SettingsState>;
 
 const input =
-  "w-full rounded-lg border border-[var(--line-strong)] bg-surface px-3.5 py-2.5 text-sm text-ink outline-none transition focus:border-accent focus:ring-2 focus:ring-[rgba(255,204,4,0.2)] disabled:opacity-60";
+  "w-full rounded-lg border border-[var(--line-strong)] bg-surface px-3.5 py-2.5 text-sm text-ink outline-none transition focus:border-accent focus:ring-2 focus:ring-[rgba(245,179,1,0.2)] disabled:opacity-60";
 const labelCls = "mb-1.5 block text-xs font-medium uppercase tracking-[0.1em] text-muted";
 const saveBtn =
   "rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-brand-deep transition hover:bg-accent-soft disabled:opacity-60";
@@ -54,7 +54,7 @@ function Card({
   }, [state, toast, success, resetOnSuccess]);
 
   return (
-    <section id={id} className="scroll-mt-24 rounded-2xl border border-[var(--line)] bg-surface p-5 shadow-[0_10px_30px_-22px_rgba(29,58,14,0.4)] sm:p-6">
+    <section id={id} className="scroll-mt-24 rounded-2xl border border-[var(--line)] bg-surface p-5 shadow-[0_10px_30px_-22px_rgba(8,8,8,0.4)] sm:p-6">
       <h2 className="font-display text-xl font-semibold text-ink">{title}</h2>
       <p className="mt-1 text-sm text-muted">{description}</p>
       <form ref={formRef} action={formAction} className="mt-5 space-y-4">
@@ -132,7 +132,7 @@ export function StoreSettingsForms({ settings, canEdit }: { settings: StoreSetti
       >
         {(s) => (
           <div className="grid gap-4 sm:grid-cols-2">
-            <Field name="email" label="Correo electrónico" type="email" defaultValue={v(s, "email", settings.contact.email)} placeholder="eventos@casadelcamba.com" />
+            <Field name="email" label="Correo electrónico" type="email" defaultValue={v(s, "email", settings.contact.email)} placeholder="eventos@frenoshop.com" />
             <Field name="phone" label="Teléfono" defaultValue={v(s, "phone", settings.contact.phone)} placeholder="+591 700 00000" />
             <Field
               name="whatsapp"

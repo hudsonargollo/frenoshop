@@ -22,37 +22,40 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Casa del Camba | El mejor sabor de Santa Cruz",
-    template: "%s | Casa del Camba",
+    default: "FRENOSHOP | Frenos y repuestos en Santa Cruz",
+    template: "%s | FRENOSHOP",
   },
   description:
-    "Comida típica cruceña desde 1986: majao de pato, picante de pollo, empanadas de keperí y parrilla. Pide en línea con delivery o retiro en tienda en Santa Cruz, Bolivia.",
+    "Repuestos de freno en Santa Cruz: pastillas, discos, tambores, cilindros, kits y sellos. Atención directa por WhatsApp, delivery y retiro en Feria Barrio Lindo.",
   keywords: [
-    "Casa del Camba",
-    "comida típica cruceña",
-    "majao de pato",
-    "picante de pollo",
-    "empanadas de keperí",
-    "parrilla",
-    "delivery Santa Cruz",
-    "retiro en tienda",
+    "FRENOSHOP",
+    "frenos Santa Cruz",
+    "pastillas de freno",
+    "discos de freno",
+    "tambores de freno",
+    "cilindros de freno",
+    "kits de frenos",
+    "repuestos de freno",
+    "Feria Barrio Lindo",
     "Santa Cruz",
     "Bolivia",
   ],
-  applicationName: "Casa del Camba",
+  applicationName: "FRENOSHOP",
   openGraph: {
-    title: "Casa del Camba | El mejor sabor de Santa Cruz",
+    title: "FRENOSHOP | Frenos y repuestos en Santa Cruz",
     description:
-      "Comida típica cruceña desde 1986: majao de pato, picantes, empanadas de keperí y parrilla, con delivery y retiro en tienda en Santa Cruz.",
+      "Pastillas, discos, tambores, cilindros, kits y sellos para el sistema de frenos. Delivery y retiro en Feria Barrio Lindo, Santa Cruz.",
     type: "website",
-    siteName: "Casa del Camba",
+    siteName: "FRENOSHOP",
     url: siteUrl,
+    images: [{ url: "/images/og-frenoshop.png", width: 1200, height: 630, alt: "FRENOSHOP — frenos y repuestos" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Casa del Camba | El mejor sabor de Santa Cruz",
+    title: "FRENOSHOP | Frenos y repuestos en Santa Cruz",
     description:
-      "Comida típica cruceña desde 1986: majao de pato, picantes, empanadas de keperí y parrilla, con delivery y retiro en tienda en Santa Cruz.",
+      "Pastillas, discos, tambores, cilindros, kits y sellos para el sistema de frenos. Delivery y retiro en Feria Barrio Lindo, Santa Cruz.",
+    images: ["/images/og-frenoshop.png"],
   },
 };
 
@@ -71,7 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){try{var t=localStorage.getItem('casadelcamba-theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}else if(t==='light'){document.documentElement.setAttribute('data-theme','light');}}catch(e){}})();",
+              "(function(){try{var t=localStorage.getItem('frenoshop-theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}else if(t==='light'){document.documentElement.setAttribute('data-theme','light');}}catch(e){}})();",
           }}
         />
         <ToastProvider>

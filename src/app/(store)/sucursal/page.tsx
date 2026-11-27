@@ -4,9 +4,9 @@ import { getStoreSettings } from "@/lib/settings";
 import { BranchMapExperience } from "@/components/branch-map/branch-map-experience";
 
 export const metadata: Metadata = {
-  title: "Mapa de sucursales",
+  title: "Nuestro local",
   description:
-    "Explora las 13 sucursales Casa del Camba en Santa Cruz, ubica la más cercana y elige dónde preparar tu pedido.",
+    "Encuentra FRENOSHOP en Feria Barrio Lindo, Acronal B, pasillo D 316, Santa Cruz de la Sierra.",
 };
 
 export const dynamic = "force-dynamic";

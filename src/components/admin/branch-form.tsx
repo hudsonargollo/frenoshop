@@ -8,7 +8,7 @@ import type { AdminBranchRow } from "@/lib/admin-data";
 import { createBranch, updateBranch } from "@/app/admin/(dashboard)/branches/actions";
 
 const input =
-  "w-full rounded-lg border border-[var(--line-strong)] bg-surface px-3.5 py-2.5 text-sm text-ink outline-none transition focus:border-accent focus:ring-2 focus:ring-[rgba(255,204,4,0.2)] disabled:opacity-60";
+  "w-full rounded-lg border border-[var(--line-strong)] bg-surface px-3.5 py-2.5 text-sm text-ink outline-none transition focus:border-accent focus:ring-2 focus:ring-[rgba(245,179,1,0.2)] disabled:opacity-60";
 const labelCls = "mb-1.5 block text-xs font-medium uppercase tracking-[0.1em] text-muted";
 
 function Field({
@@ -110,12 +110,12 @@ export function BranchForm({ branch, mode }: { branch?: AdminBranchRow; mode: "c
     <form
       key={state.values ? "error" : "initial"}
       action={formAction}
-      className="space-y-6 rounded-2xl border border-[var(--line)] bg-surface p-5 shadow-[0_10px_30px_-22px_rgba(29,58,14,0.4)] sm:p-6"
+      className="space-y-6 rounded-2xl border border-[var(--line)] bg-surface p-5 shadow-[0_10px_30px_-22px_rgba(8,8,8,0.4)] sm:p-6"
     >
       <section>
         <h2 className="font-display text-lg font-semibold text-ink">Identificación</h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
-          <Field name="name" label="Nombre de la sucursal" required defaultValue={text("name")} placeholder="Casa del Camba · Equipetrol" />
+          <Field name="name" label="Nombre de la sucursal" required defaultValue={text("name")} placeholder="FRENOSHOP · Equipetrol" />
           <Field
             name="code"
             label="Código"

@@ -7,8 +7,8 @@ import { useBranchPicker } from "./branch-picker";
 
 const NAV = [
   { label: "Inicio", href: "/" },
-  { label: "Menú", href: "/shop" },
-  { label: "Sucursales", href: "/sucursal" },
+  { label: "Catálogo", href: "/shop" },
+  { label: "Local", href: "/sucursal" },
   { label: "Nosotros", href: "/about" },
   { label: "Contacto", href: "/contact" },
 ];
@@ -27,7 +27,7 @@ export function SiteHeader({
   const pathname = usePathname();
   const picker = useBranchPicker();
 
-  // The programme name is owner-editable (Admin → Club Camba), so the link is
+  // The programme name is owner-editable (Admin → Club), so the link is
   // built from settings instead of hardcoded into NAV.
   const nav = clubName
     ? [...NAV.slice(0, 2), { label: clubName, href: "/club-camba" }, ...NAV.slice(2)]
@@ -42,16 +42,16 @@ export function SiteHeader({
         {/* Brand */}
         <Link
           href="/"
-          aria-label="Casa del Camba — inicio"
+          aria-label="FRENOSHOP — inicio"
           className="group flex min-w-0 shrink items-center transition-transform duration-300 hover:scale-[1.02] lg:shrink-0 lg:justify-self-start"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/casadelcamba-logo.png"
-            alt="Casa del Camba"
-            width={228}
-            height={169}
-            className="h-10 w-auto sm:h-11 lg:h-12"
+            src="/images/frenoshop-logo.png"
+            alt="FRENOSHOP"
+            width={908}
+            height={197}
+            className="h-9 w-auto sm:h-10 lg:h-11"
           />
         </Link>
 
@@ -90,10 +90,10 @@ export function SiteHeader({
             type="button"
             onClick={() => picker.open()}
             className="mr-1 hidden items-center gap-1.5 rounded-full border border-[var(--line)] bg-surface/60 px-3 py-1.5 text-xs font-semibold text-brand transition hover:border-accent hover:text-accent-strong md:flex dark:text-ink"
-            title="Cambiar sucursal"
+            title="Cambiar local"
           >
             <PinIcon />
-            <span className="max-w-[10rem] truncate">{branch?.name ?? "Elegir sucursal"}</span>
+            <span className="max-w-[10rem] truncate">{branch?.name ?? "Elegir local"}</span>
           </button>
           <Link href="/search" aria-label="Buscar" className={`${iconBtn} hidden sm:flex`}>
             <SearchIcon />
@@ -108,7 +108,7 @@ export function SiteHeader({
       </div>
 
       {/* Accent hairline */}
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-[rgba(255,204,4,0.5)] to-transparent" />
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-[rgba(245,179,1,0.5)] to-transparent" />
     </header>
   );
 }

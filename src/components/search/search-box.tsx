@@ -27,7 +27,7 @@ type Suggest = {
   }[];
 };
 
-const EXAMPLES = ["majao", "empanadas", "silpancho", "postre", "coca-cola", "parrilla"];
+const EXAMPLES = ["pastillas", "discos", "bombas", "kits", "DOT 4", "mangueras"];
 
 export function BuscarBox({ initial = "", autoFocus = false }: { initial?: string; autoFocus?: boolean }) {
   const router = useRouter();
@@ -137,7 +137,7 @@ export function BuscarBox({ initial = "", autoFocus = false }: { initial?: strin
           if (term) go(`/search?q=${encodeURIComponent(term)}`);
           else inputRef.current?.focus();
         }}
-        className="group relative flex items-center rounded-full border border-[var(--line-strong)] bg-surface p-1.5 pl-5 shadow-[0_18px_44px_-28px_rgba(29,58,14,0.55)] transition focus-within:border-accent focus-within:ring-4 focus-within:ring-[rgba(255,204,4,0.18)]"
+        className="group relative flex items-center rounded-full border border-[var(--line-strong)] bg-surface p-1.5 pl-5 shadow-[0_18px_44px_-28px_rgba(8,8,8,0.55)] transition focus-within:border-accent focus-within:ring-4 focus-within:ring-[rgba(245,179,1,0.18)]"
       >
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" className="h-5 w-5 shrink-0 text-accent-strong" aria-hidden="true">
           <circle cx="11" cy="11" r="7" />
@@ -160,7 +160,7 @@ export function BuscarBox({ initial = "", autoFocus = false }: { initial?: strin
           spellCheck={false}
           enterKeyHint="search"
           placeholder={`Prueba “${EXAMPLES[hint]}”`}
-          aria-label="Buscar en el menú"
+          aria-label="Buscar en el catálogo"
           role="combobox"
           aria-expanded={open && !!shown}
           aria-controls={listId}
@@ -186,7 +186,7 @@ export function BuscarBox({ initial = "", autoFocus = false }: { initial?: strin
         )}
         <button
           type="submit"
-          className="shrink-0 rounded-full bg-gradient-to-r from-accent-soft via-accent to-accent-strong px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.14em] text-brand shadow-[0_10px_24px_-12px_rgba(255,204,4,0.9)] transition hover:brightness-105 sm:px-7"
+          className="shrink-0 rounded-full bg-gradient-to-r from-accent-soft via-accent to-accent-strong px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.14em] text-brand shadow-[0_10px_24px_-12px_rgba(245,179,1,0.9)] transition hover:brightness-105 sm:px-7"
         >
           Buscar
         </button>
@@ -196,7 +196,7 @@ export function BuscarBox({ initial = "", autoFocus = false }: { initial?: strin
         <div
           id={listId}
           role="listbox"
-          className="absolute inset-x-0 top-full z-40 mt-2 overflow-hidden rounded-2xl border border-[var(--line-strong)] bg-surface text-left shadow-[0_30px_60px_-30px_rgba(29,58,14,0.7)] animate-chatin [transform-origin:top_center]"
+          className="absolute inset-x-0 top-full z-40 mt-2 overflow-hidden rounded-2xl border border-[var(--line-strong)] bg-surface text-left shadow-[0_30px_60px_-30px_rgba(8,8,8,0.7)] animate-chatin [transform-origin:top_center]"
         >
           {shown.correction && (
             <p className="border-b border-[var(--line)] px-4 py-2.5 text-xs text-muted">
@@ -216,7 +216,7 @@ export function BuscarBox({ initial = "", autoFocus = false }: { initial?: strin
                 <span className="min-w-0 flex-1">
                   <span className="block text-sm font-semibold text-ink">Ver todo en {shown.category.name}</span>
                   <span className="block text-xs text-muted">
-                    {shown.category.count} producto{shown.category.count === 1 ? "" : "s"} en el menú
+                    {shown.category.count} producto{shown.category.count === 1 ? "" : "s"} en el catálogo
                   </span>
                 </span>
                 <span className="text-accent-strong">→</span>
@@ -235,7 +235,7 @@ export function BuscarBox({ initial = "", autoFocus = false }: { initial?: strin
 
             {shown.products.length > 0 && (
               <p className="px-3 pb-1 pt-2 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-muted">
-                {shown.partial ? "Coincidencias cercanas" : "Del menú"}
+                {shown.partial ? "Coincidencias cercanas" : "Del catálogo"}
               </p>
             )}
             {shown.products.map((p, i) => {

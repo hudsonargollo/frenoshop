@@ -6,9 +6,9 @@ import { MenuSection } from "@/components/shop/menu-section";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/shop" },
-  title: "Menú: platos típicos, parrilla y empanadas",
+  title: "Catálogo: pastillas, discos y repuestos de freno",
   description:
-    "Majao de pato, picante de pollo, empanadas de keperí, parrilla y postres cambas. Pide online con delivery o retiro en nuestras sucursales de Santa Cruz.",
+    "Explora el catálogo de FRENOSHOP: pastillas de freno, discos, tambores, cilindros, kits y líquidos en Santa Cruz, Bolivia.",
 };
 
 export const dynamic = "force-dynamic";
@@ -16,22 +16,20 @@ export const dynamic = "force-dynamic";
 export default async function ShopPage() {
   const branch = await getSelectedBranch();
   const products = await getProducts({}, branch?.id);
-  const drinks = products.filter((p) => p.category.slug === "bebidas");
-  const desserts = products.filter((p) => p.category.slug === "postres");
-  const drinksAndDesserts = new Set([...drinks, ...desserts].map((p) => p.id));
-  const mains = products.filter((p) => !drinksAndDesserts.has(p.id));
+  const highlights = products.filter((p) => p.featured);
+  const rest = products.filter((p) => !p.featured);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
       <header className="max-w-3xl">
-        <span className="eyebrow">El menú</span>
+        <span className="eyebrow">El catálogo</span>
         <h1 className="mt-3 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-ink text-balance sm:text-5xl lg:text-6xl">
-          El mejor sabor de Santa Cruz
+          Repuestos de freno en Santa Cruz
         </h1>
         <p className="mt-4 max-w-2xl text-pretty text-base text-muted sm:text-lg">
-          Cocina criolla de verdad: majao de pato, picante de lengua, empanadas de keperí
-          y parrilla con arroz con queso y yuca frita. Elige tu plato y acompáñalo
-          con algo bien frío.
+          Pastillas, discos, tambores, cilindros, kits y líquidos para mantener tu
+          vehículo frenando seguro. Explora por categoría o consúltanos si no
+          encuentras tu pieza.
         </p>
       </header>
 
@@ -41,40 +39,32 @@ export default async function ShopPage() {
 
       <div className="mt-14 space-y-14 sm:mt-16 sm:space-y-16">
         <MenuSection
-          id="platos"
-          eyebrow="Las clásicas"
-          title="Platos típicos y parrilla"
-          description="Los sabores cambas de siempre, preparados al momento con las guarniciones de la casa: arroz, yuca frita, plátano y llajua."
-          href="/shop/platos-tipicos-y-combinados"
-          linkLabel="Ver platos típicos"
-          products={mains}
+          id="destacados"
+          eyebrow="Lo más buscado"
+          title="Repuestos destacados"
+          description="Las piezas que más solicitan nuestros clientes en Feria Barrio Lindo."
+          href="/shop"
+          linkLabel="Ver todo"
+          products={highlights}
         />
 
         <MenuSection
-          id="bebidas"
-          eyebrow="Bien frías"
-          title="Bebidas"
-          description="Gaseosas de 500 ml bien frías para acompañar tu pedido."
-          href="/shop/bebidas"
-          linkLabel="Ver bebidas"
-          products={drinks}
-        />
-
-        <MenuSection
-          id="postres"
-          eyebrow="Para cerrar"
-          title="Postres"
-          description="Algo dulce para terminar el pedido."
-          href="/shop/postres"
-          linkLabel="Ver postres"
-          products={desserts}
+          id="catalogo"
+          eyebrow="Todo el catálogo"
+          title="Repuestos por categoría"
+          description="Elige la categoría que necesitas o escríbenos para confirmar la compatibilidad con tu vehículo."
+          href="/shop"
+          linkLabel="Ver todo"
+          products={rest}
         />
       </div>
 
       {products.length === 0 ? (
         <div className="mt-12 rounded-2xl border border-dashed border-[var(--line)] bg-surface py-16 text-center">
-          <p className="font-display text-xl text-ink">El menú está tomando forma</p>
-          <p className="mt-1 text-sm text-muted">Vuelve en un momento.</p>
+          <p className="font-display text-xl text-ink">El catálogo está tomando forma</p>
+          <p className="mt-1 text-sm text-muted">
+            Estamos cargando los repuestos. Escríbenos por WhatsApp y te ayudamos mientras tanto.
+          </p>
         </div>
       ) : null}
     </div>

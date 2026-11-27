@@ -27,13 +27,13 @@ export async function generateMetadata({
   const { slug } = await params;
   const product = await getProductBySlug(slug);
   if (!product) return { title: "No encontrado" };
-  const description = product.description ?? `${product.name} — disponible en Casa del Camba.`;
+  const description = product.description ?? `${product.name} — disponible en FRENOSHOP.`;
   return {
     title: product.name,
     description,
     alternates: { canonical: `/product/${product.slug}` },
     openGraph: {
-      title: `${product.name} · Casa del Camba`,
+      title: `${product.name} · FRENOSHOP`,
       description,
       type: "website",
       url: `${siteUrl}/product/${product.slug}`,
@@ -48,7 +48,7 @@ function attributeOf(text: string): string | null {
   if (/pollo|corazones/i.test(text)) return "Pollo";
   if (/calabresa|salchicha/i.test(text)) return "Calabresa";
   if (/carne|filet/i.test(text)) return "Carne";
-  if (/picante/i.test(text)) return "Picante";
+  if (/dot\s*[345]/i.test(text)) return `DOT ${text.match(/dot\s*([345])/i)?.[1] ?? "4"}`;
   return null;
 }
 
@@ -98,14 +98,14 @@ export default async function ProductPage({ params }: PageProps<"/product/[slug]
         ...(attribute ? ([["Tipo", attribute]] as [string, string][]) : []),
         ["Disponibilidad", inStock ? "En stock" : "Agotado"],
         ["Entrega estimada", DELIVERY_TIME],
-        ["Pago", "Contra entrega en tu sucursal Casa del Camba"],
+        ["Pago", "Contra entrega o retiro en Feria Barrio Lindo"],
         ["Atención cuidadosa", "Contáctanos con tu número de pedido"],
       ];
 
   const aboutBullets = [
     ...sentences,
-    "Preparado al momento en tu sucursal Casa del Camba.",
-    "Pago contra entrega al recibir, o retiro en tienda sin costo.",
+    "Repuesto verificado por FRENOSHOP antes de la entrega.",
+    "Envío a domicilio o retiro sin costo en Feria Barrio Lindo.",
   ];
 
   const productJsonLd = {
@@ -116,7 +116,7 @@ export default async function ProductPage({ params }: PageProps<"/product/[slug]
     category: product.category.name,
     ...(pack ? { material: pack } : {}),
     ...(product.images.length ? { image: product.images } : {}),
-    brand: { "@type": "Brand", name: "Casa del Camba" },
+    brand: { "@type": "Brand", name: "FRENOSHOP" },
     offers: {
       "@type": "Offer",
       priceCurrency: "BOB",
@@ -133,7 +133,7 @@ export default async function ProductPage({ params }: PageProps<"/product/[slug]
       <JsonLd data={productJsonLd} />
       {/* Breadcrumb */}
       <nav className="text-sm text-muted">
-        <Link href="/shop" className="hover:text-accent-strong">Menú</Link>
+        <Link href="/shop" className="hover:text-accent-strong">Catálogo</Link>
         <span className="mx-2">/</span>
         <Link href={`/shop/${product.category.slug}`} className="hover:text-accent-strong">
           {product.category.name}
@@ -208,7 +208,7 @@ export default async function ProductPage({ params }: PageProps<"/product/[slug]
                 settings.loyalty
               ) && (
                 <Assure icon="gift">
-                  <Link href="/club-camba" className="font-medium text-accent-strong hover:underline">
+                  <Link href="/custom" className="font-medium text-accent-strong hover:underline">
                     {settings.loyalty.name}
                   </Link>
                   : {stampRuleLabel(settings.loyalty)} y {pointRuleLabel(settings.loyalty)}.
@@ -248,7 +248,7 @@ export default async function ProductPage({ params }: PageProps<"/product/[slug]
 
             <Accordion title="Cómo lo preparamos">
               <p>
-                Se prepara al momento en tu sucursal Casa del Camba y sale directo a tu mesa o a tu
+                Se prepara al momento en tu sucursal FRENOSHOP y sale directo a tu mesa o a tu
                 puerta. Si quieres hacer un pedido para un evento o por volumen,{" "}
                 <Link href="/contact" className="text-accent-strong underline">escríbenos</Link>{" "}
                 y lo coordinamos contigo.
@@ -257,9 +257,9 @@ export default async function ProductPage({ params }: PageProps<"/product/[slug]
 
             <Accordion title="Ingredientes y alergias">
               <ul className="space-y-2 [&>li]:flex [&>li]:gap-2.5">
-                <li><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-strong" /> Trabajamos con lácteos, huevo, maní y gluten (empanadas).</li>
+                <li><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-strong" /> Confirma marca, modelo, año y motor antes de comprar.</li>
                 <li><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-strong" /> Avísanos si tienes alguna alergia o restricción al confirmar tu pedido.</li>
-                <li><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-strong" /> Los ingredientes de cada plato están detallados en el menú.</li>
+                <li><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-strong" /> Las especificaciones de cada repuesto están detalladas en la ficha.</li>
               </ul>
             </Accordion>
 
@@ -267,10 +267,10 @@ export default async function ProductPage({ params }: PageProps<"/product/[slug]
               <p>
                 Entregamos en moto en Santa Cruz con{" "}
                 <b className="font-medium text-ink">pago contra entrega</b>. Los pedidos se preparan
-                al momento y salen de la sucursal que elegiste.
-                Si tu pedido llega incompleto o en mal estado, contáctanos con tu{" "}
-                <b className="font-medium text-ink">número de pedido</b>. Nos importa que disfrutes
-                tu comida. Revisamos lo ocurrido con cuidado y lo más rápido posible para
+                al momento y se envían desde nuestro local de Feria Barrio Lindo.
+                Si tu pedido llega incompleto o con fallas, contáctanos con tu{" "}
+                <b className="font-medium text-ink">número de pedido</b>. Nos importa que tu freno
+                esté en buen estado. Revisamos lo ocurrido con cuidado y lo más rápido posible para
                 coordinar contigo la solución más adecuada.
               </p>
             </Accordion>
@@ -279,11 +279,11 @@ export default async function ProductPage({ params }: PageProps<"/product/[slug]
 
         {/* Sticky assurance rail on desktop */}
         <aside className="hidden lg:block">
-          <div className="sticky top-24 rounded-2xl border border-[var(--line)] bg-surface p-6 shadow-[0_20px_50px_-40px_rgba(29,58,14,0.5)]">
-            <p className="font-display text-xl font-semibold text-ink">¿Por qué Casa del Camba?</p>
+          <div className="sticky top-24 rounded-2xl border border-[var(--line)] bg-surface p-6 shadow-[0_20px_50px_-40px_rgba(8,8,8,0.5)]">
+            <p className="font-display text-xl font-semibold text-ink">¿Por qué FRENOSHOP?</p>
             <ul className="mt-4 space-y-3 text-sm text-ink/80">
               <li className="flex gap-2.5"><Dot /> Todo se prepara al momento en tu sucursal</li>
-              <li className="flex gap-2.5"><Dot /> Pago contra entrega en tu sucursal Casa del Camba</li>
+              <li className="flex gap-2.5"><Dot /> Pago contra entrega en tu sucursal FRENOSHOP</li>
               <li className="flex gap-2.5"><Dot /> Delivery con entrega estimada: {DELIVERY_TIME}. También puedes retirar en tienda</li>
               <li className="flex gap-2.5"><Dot /> Atención cercana por WhatsApp</li>
             </ul>

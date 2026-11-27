@@ -6,13 +6,13 @@ import { SplitText } from "@/components/text-reveal";
 export const metadata: Metadata = {
   alternates: { canonical: "/about" },
   title: "Nosotros",
-  description: "Casa del Camba — comida típica cruceña desde 1986. El mejor sabor de Santa Cruz, con delivery y retiro en tienda.",
+  description: "FRENOSHOP — repuestos de frenos en Santa Cruz, Bolivia. Atención personalizada en Feria Barrio Lindo.",
 };
 
 const PILLARS = [
-  { title: "Hecho al momento", body: "Nada espera bajo una lámpara: tu plato se prepara cuando confirmas el pedido." },
-  { title: "Recetas de siempre", body: "Los sabores cambas que nos hicieron famosos: majao, picantes, empanadas y parrilla." },
-  { title: "Delivery y retiro", body: "Te lo llevamos a la puerta o lo recoges en tu sucursal Casa del Camba más cercana." },
+  { title: "Frenos, ante todo", body: "Pastillas, discos, cilindros y kits: todo lo que tu vehículo necesita para frenar seguro." },
+  { title: "Atención de verdad", body: "Te ayudamos a encontrar la pieza correcta para tu marca y modelo. Sin vueltas, sin correteos." },
+  { title: "Fácil de encontrar", body: "Estamos en Feria Barrio Lindo, Acronal B, pasillo D 316. Escríbenos por WhatsApp y te atendemos." },
 ];
 
 export default function AboutPage() {
@@ -21,28 +21,27 @@ export default function AboutPage() {
       <div className="mx-auto max-w-4xl overflow-hidden rounded-2xl border border-[var(--line)] bg-panel">
         <div className="px-6 py-16 text-center sm:px-14">
           <Emblem size={52} className="mx-auto text-brand" accent="var(--color-accent)" />
-          <span className="eyebrow mt-5 block">Nuestra historia</span>
+          <span className="eyebrow mt-5 block">Quiénes somos</span>
           <h1 className="mt-2 font-display text-4xl font-extrabold tracking-tight text-ink text-balance sm:text-5xl">
-            <SplitText text="Tradición camba" />{" "}
-            <span className="brand-text">desde 1986</span>
+            <SplitText text="Tu freno" />{" "}
+            <span className="brand-text">en buenas manos</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-pretty text-ink/80">
-            Casa del Camba abrió sus puertas el 6 de diciembre de 1986, fundada por el
-            ingeniero Juan Carlos Medina Anzoátegui y Rosa Parada de Medina, con una idea
-            clara: rescatar los sabores cambas en una Santa Cruz que empezaba a llenarse
-            de influencias de afuera.
+            FRENOSHOP nació en Santa Cruz para resolver lo que todo conductor conoce:
+            encontrar el repuesto de freno correcto, rápido y sin complicaciones.
+            Nos especializamos en pastillas, discos, tambores, cilindros, kits y
+            líquidos para autos y camionetas.
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-pretty text-ink/80">
-            Desde entonces cocinamos la comida criolla que nos identifica: majao de pato y
-            charque, picantes, empanadas de keperí, parrilla y los postres de la casa.
-            Cada pedido se prepara al momento y sale directo a tu puerta o te espera listo
-            para retirar en nuestras sucursales.
+            Atendemos en persona en nuestro local de Feria Barrio Lindo y por
+            WhatsApp. Si no sabes qué pieza necesitas, cuéntanos tu vehículo y te
+            ayudamos a identificarla. Tu seguridad empieza por un buen freno.
           </p>
           <Link
             href="/shop"
-            className="mt-7 inline-block rounded-full bg-accent px-8 py-3 text-sm font-semibold text-brand-deep shadow-[0_14px_32px_-16px_rgba(255,204,4,0.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft"
+            className="mt-7 inline-block rounded-full bg-accent px-8 py-3 text-sm font-semibold text-brand-deep shadow-[0_14px_32px_-16px_rgba(245,179,1,0.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft"
           >
-            Ver el menú
+            Ver el catálogo
           </Link>
         </div>
       </div>

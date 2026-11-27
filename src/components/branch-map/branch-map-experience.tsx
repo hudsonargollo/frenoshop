@@ -490,7 +490,7 @@ function BranchDetail({
         <div className="mt-3 flex items-center gap-2">
           <a
             href={href}
-            className="flex flex-1 items-center justify-center gap-2 rounded-full bg-accent px-4 py-2.5 text-sm font-bold text-brand-deep shadow-[0_14px_30px_-16px_rgba(255,204,4,0.9)] transition hover:bg-accent-soft"
+            className="flex flex-1 items-center justify-center gap-2 rounded-full bg-accent px-4 py-2.5 text-sm font-bold text-brand-deep shadow-[0_14px_30px_-16px_rgba(245,179,1,0.9)] transition hover:bg-accent-soft"
           >
             {ctaLabel}
             <ArrowIcon className="h-4 w-4" />

@@ -1,4 +1,4 @@
-# Despliegue en producción — Casa del Camba
+# Despliegue en producción — FRENOSHOP
 
 Producción corre en un **VPS propio (Ubuntu) con systemd + nginx**. Netlify, Vercel y
 Cloudflare no se usan para el sitio en vivo.
@@ -7,14 +7,14 @@ Cloudflare no se usan para el sitio en vivo.
 
 | Elemento | Valor |
 | -------- | ----- |
-| URL pública | <https://casadelcamba.clubemkt.digital> |
-| Código fuente | `/root/ClubeMkt/casadelcamba` |
-| Build desplegado | `/var/www/casadelcamba` (`server.js`, `.next/`, `public/`) |
-| Servicio | `casadelcamba.service` (systemd) |
+| URL pública | <https://frenoshop.clubemkt.digital> |
+| Código fuente | `/root/ClubeMkt/frenoshop` |
+| Build desplegado | `/var/www/frenoshop` (`server.js`, `.next/`, `public/`) |
+| Servicio | `frenoshop.service` (systemd) |
 | Puerto interno | `3005` (`PORT` en la unit) |
-| Proxy | nginx `sites-enabled/casadelcamba` → `http://172.17.0.1:3005` |
-| Variables de entorno | `EnvironmentFile=/root/ClubeMkt/casadelcamba/.env` |
-| Uploads | `UPLOAD_DIR=/var/www/casadelcamba-data/uploads` |
+| Proxy | nginx `sites-enabled/frenoshop` → `http://172.17.0.1:3005` |
+| Variables de entorno | `EnvironmentFile=/root/ClubeMkt/frenoshop/.env` |
+| Uploads | `UPLOAD_DIR=/var/www/frenoshop-data/uploads` |
 | Base de datos | PostgreSQL (`DATABASE_URL` / `DIRECT_URL` en `.env`) |
 
 `next.config.ts` genera `output: "standalone"` en el VPS (en Netlify/Vercel se
@@ -26,7 +26,7 @@ desactiva porque esas plataformas empaquetan la app por su cuenta).
 ## Desplegar
 
 ```bash
-cd /root/ClubeMkt/casadelcamba
+cd /root/ClubeMkt/frenoshop
 git pull
 bash scripts/deploy.sh
 ```
@@ -36,17 +36,17 @@ El script:
 1. `npm install` y `npx prisma generate`.
 2. `npx prisma migrate deploy`.
 3. `npm run build`.
-4. Copia el build standalone a `/var/www/casadelcamba` (sin `node_modules`) y
+4. Copia el build standalone a `/var/www/frenoshop` (sin `node_modules`) y
    sincroniza `public/`.
-5. Limpia `.next/cache` y reinicia `casadelcamba.service`.
+5. Limpia `.next/cache` y reinicia `frenoshop.service`.
 6. Comprueba `http://127.0.0.1:3005/` hasta obtener `200`.
 
 ## Operación
 
 ```bash
-systemctl status casadelcamba.service
-systemctl restart casadelcamba.service
-journalctl -u casadelcamba.service -f
+systemctl status frenoshop.service
+systemctl restart frenoshop.service
+journalctl -u frenoshop.service -f
 curl -I http://127.0.0.1:3005/
 curl -s http://127.0.0.1:3005/api/health
 ```
@@ -65,7 +65,7 @@ lo normal es usar systemd.
 Las imágenes subidas desde el panel se guardan **fuera** del build, en
 `UPLOAD_DIR`, y se sirven por `/uploads/products/[file]` y
 `/uploads/references/[file]`. El despliegue no toca esa carpeta. Respalda
-`/var/www/casadelcamba-data/uploads`.
+`/var/www/frenoshop-data/uploads`.
 
 ## Rollback
 

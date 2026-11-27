@@ -8,24 +8,25 @@ import { InstagramIcon } from "@/components/icons";
 
 const NAV = [
   { label: "Inicio", href: "/" },
-  { label: "Menú", href: "/shop" },
-  { label: "Sucursales", href: "/sucursal" },
+  { label: "Catálogo", href: "/shop" },
+  { label: "Local", href: "/sucursal" },
   { label: "Nosotros", href: "/about" },
   { label: "Contacto", href: "/contact" },
 ];
 
 const HELP = [
   { label: "Estado de pedido", href: "/account/orders" },
-  { label: "Delivery y devoluciones", href: "/shipping" },
-  { label: "Ingredientes y alergias", href: "/care" },
+  { label: "Envíos y devoluciones", href: "/shipping" },
+  { label: "Garantía y compatibilidad", href: "/care" },
+  { label: "Repuestos a pedido", href: "/custom" },
   { label: "Preguntas frecuentes", href: "/faq" },
 ];
 
 const TRUST = [
-  "Hecho al momento",
+  "Calidad garantizada",
   "Delivery y retiro",
   "Pago contra entrega",
-  "Tradición camba desde 1986",
+  "Repuestos para tu vehículo",
 ];
 
 export function SiteFooter({ settings }: { settings: StoreSettings }) {
@@ -35,38 +36,38 @@ export function SiteFooter({ settings }: { settings: StoreSettings }) {
     whatsappUrl: whatsappUrl(settings),
     phoneHref: phoneHref(settings),
   };
-  // The programme name (and whether it exists at all) comes from Admin → Club Camba.
+  // The programme name (and whether it exists at all) comes from Admin → Club.
   const help = settings.loyalty.enabled
     ? [{ label: settings.loyalty.name, href: "/club-camba" }, ...HELP]
     : HELP;
   return (
     <footer
       className="relative overflow-hidden text-light/80"
-      style={{ background: "linear-gradient(180deg, #3c6e1b 0%, #1d3a0e 100%)" }}
+      style={{ background: "linear-gradient(180deg, #1a1a1a 0%, #080808 100%)" }}
     >
       {/* accent top line + soft glow */}
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-[rgba(255,216,102,0.7)] to-transparent" />
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-[rgba(255,216,92,0.7)] to-transparent" />
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-56"
-        style={{ background: "radial-gradient(50% 100% at 50% 0%, rgba(255,216,102,0.12), transparent 70%)" }}
+        style={{ background: "radial-gradient(50% 100% at 50% 0%, rgba(255,216,92,0.12), transparent 70%)" }}
       />
 
       <div className="relative mx-auto grid max-w-6xl gap-12 px-6 py-16 md:grid-cols-12 md:gap-10">
         {/* Brand + socials */}
         <div className="flex flex-col items-center text-center md:col-span-4 md:items-start md:text-left">
-          <Link href="/" aria-label="Casa del Camba — inicio" className="inline-flex">
+          <Link href="/" aria-label="FRENOSHOP — inicio" className="inline-flex">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/casadelcamba-logo.png"
-              alt="Casa del Camba"
-              width={228}
-              height={169}
-              className="h-14 w-auto"
+              src="/images/frenoshop-logo.png"
+              alt="FRENOSHOP"
+              width={908}
+              height={197}
+              className="h-12 w-auto"
             />
           </Link>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-light/60">
-            Comida típica cruceña desde 1986: majao, picantes, empanadas de keperí y
-            parrilla — con delivery y retiro en tienda.
+            Frenos y repuestos para tu vehículo en Santa Cruz. Pastillas, discos,
+            tambores, cilindros, kits y sellos — con envíos y retiro en tienda.
           </p>
           <div className="mt-6 flex gap-3">
             {CONTACT.instagram && (
@@ -93,7 +94,7 @@ export function SiteFooter({ settings }: { settings: StoreSettings }) {
               <EmailLink
                 email={CONTACT.email}
                 ariaLabel="Correo"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(255,216,102,0.35)] text-light/80 transition hover:border-accent hover:bg-accent hover:text-brand-deep"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(255,216,92,0.35)] text-light/80 transition hover:border-accent hover:bg-accent hover:text-brand-deep"
               >
                 <MailIcon />
               </EmailLink>
@@ -141,7 +142,7 @@ export function SiteFooter({ settings }: { settings: StoreSettings }) {
       </div>
 
       {/* Trust strip */}
-      <div className="relative border-t border-[rgba(255,216,102,0.18)]">
+      <div className="relative border-t border-[rgba(255,216,92,0.18)]">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-8 gap-y-2 px-6 py-4 text-[0.68rem] uppercase tracking-[0.16em] text-light/55">
           {TRUST.map((t) => (
             <span key={t} className="flex items-center gap-1.5">
@@ -155,10 +156,10 @@ export function SiteFooter({ settings }: { settings: StoreSettings }) {
       </div>
 
       {/* Bottom bar */}
-      <div className="relative border-t border-[rgba(255,216,102,0.18)]">
+      <div className="relative border-t border-[rgba(255,216,92,0.18)]">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-6 py-5 text-center text-xs text-light/45 sm:flex-row sm:text-left">
-          <span>© {new Date().getFullYear()} Casa del Camba. Todos los derechos reservados.</span>
-          <span>Hecho en Santa Cruz, Bolivia · El mejor sabor de Santa Cruz</span>
+          <span>© {new Date().getFullYear()} FRENOSHOP. Todos los derechos reservados.</span>
+          <span>Hecho en Santa Cruz, Bolivia · Frenos y repuestos en Santa Cruz</span>
         </div>
       </div>
     </footer>
@@ -206,7 +207,7 @@ function Social({
       // Web profiles open in a new tab; mailto:/tel: open the mail/phone app directly.
       {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       aria-label={label}
-      className="flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(255,216,102,0.35)] text-light/80 transition hover:border-accent hover:bg-accent hover:text-brand-deep"
+      className="flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(255,216,92,0.35)] text-light/80 transition hover:border-accent hover:bg-accent hover:text-brand-deep"
     >
       {children}
     </a>

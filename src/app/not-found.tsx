@@ -13,12 +13,12 @@ export default function NotFound() {
       </h1>
       <p className="mx-auto mt-3 max-w-md text-muted">
         La página que buscas puede haberse movido o ya no existe.
-        Volvamos a lo que se te antoja.
+        Volvamos a lo que necesitas.
       </p>
       <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
         <Link
           href="/"
-          className="rounded-full bg-accent px-8 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-brand-deep shadow-[0_14px_32px_-16px_rgba(255,204,4,0.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft"
+          className="rounded-full bg-accent px-8 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-brand-deep shadow-[0_14px_32px_-16px_rgba(245,179,1,0.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft"
         >
           Volver al inicio
         </Link>
@@ -26,7 +26,7 @@ export default function NotFound() {
           href="/shop"
           className="rounded-full border border-[var(--line-strong)] px-8 py-3 text-sm font-medium uppercase tracking-[0.12em] text-ink transition hover:border-accent hover:text-accent-strong"
         >
-          Explorar el menú
+          Explorar el catálogo
         </Link>
       </div>
     </main>

@@ -19,7 +19,7 @@ export function CustomDesignForm({ whatsappUrl }: { whatsappUrl?: string }) {
 
   useEffect(() => {
     if (state.error) toast.error(state.error);
-    else if (state.ok) toast.success("Nuestro equipo te contactará lo antes posible para coordinar disponibilidad, opciones y precio.", { title: "Pedido recibido" });
+    else if (state.ok) toast.success("Nuestro equipo te contactará lo antes posible para confirmar disponibilidad y precio.", { title: "Pedido recibido" });
   }, [state, toast]);
 
   const bind = (name: string, filter?: (v: string) => string) => bindControl(f, name, filter);
@@ -29,13 +29,13 @@ export function CustomDesignForm({ whatsappUrl }: { whatsappUrl?: string }) {
       <div className="rounded-2xl border border-accent/40 bg-accent/5 px-6 py-12 text-center">
         <h3 className="font-display text-2xl font-semibold text-ink">¡Gracias! Recibimos tu pedido.</h3>
         <p className="mx-auto mt-2 max-w-md text-muted">
-          Nuestro equipo revisará tu pedido y te contactará lo antes posible para coordinar disponibilidad, opciones y precio.
+          Nuestro equipo revisará tu pedido y te contactará lo antes posible para confirmar disponibilidad y precio.
         </p>
         <Link
           href="/shop"
           className="mt-6 inline-block rounded-full border border-[var(--line-strong)] px-7 py-2.5 text-sm font-medium text-ink transition hover:border-accent hover:text-accent-strong"
         >
-          Explora el menú mientras tanto
+          Explora el catálogo mientras tanto
         </Link>
       </div>
     );
@@ -90,7 +90,7 @@ export function CustomDesignForm({ whatsappUrl }: { whatsappUrl?: string }) {
             {...bind("details")}
             rows={5}
             maxLength={3000}
-            placeholder="Cuéntanos qué necesitas — cuántas personas, qué platos te gustarían y para cuándo…"
+            placeholder="Cuéntanos tu vehículo — marca, modelo, año, motor y la pieza que necesitas…"
             className={`${control} resize-y`}
           />
         )}
@@ -105,7 +105,7 @@ export function CustomDesignForm({ whatsappUrl }: { whatsappUrl?: string }) {
         <button
           type="submit"
           disabled={pending}
-          className="rounded-full bg-accent px-9 py-3.5 text-sm font-semibold uppercase tracking-[0.12em] text-brand-deep shadow-[0_14px_32px_-16px_rgba(255,204,4,0.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft disabled:opacity-60"
+          className="rounded-full bg-accent px-9 py-3.5 text-sm font-semibold uppercase tracking-[0.12em] text-brand-deep shadow-[0_14px_32px_-16px_rgba(245,179,1,0.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft disabled:opacity-60"
         >
           {pending ? "Enviando…" : "Enviar pedido"}
         </button>

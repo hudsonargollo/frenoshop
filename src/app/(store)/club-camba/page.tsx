@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const { loyalty } = await getStoreSettings();
   return {
     title: `${loyalty.name}: suma sellos y gana`,
-    description: `${loyalty.name} de Casa del Camba — ${stampRuleLabel(loyalty)} y ${pointRuleLabel(loyalty)} canjeables por regalos.`,
+    description: `${loyalty.name} de FRENOSHOP — ${stampRuleLabel(loyalty)} y ${pointRuleLabel(loyalty)} canjeables por regalos.`,
     alternates: { canonical: "/club-camba" },
   };
 }
@@ -252,7 +252,7 @@ export default async function ClubCambaPage() {
       )}
 
       <p className="mt-10 text-center text-xs text-muted">
-        {rules.name} es exclusivo de Casa del Camba y funciona en todas nuestras sucursales.
+        {rules.name} es exclusivo de FRENOSHOP y funciona en todas nuestras sucursales.
         Aplican los términos del programa.
       </p>
     </div>

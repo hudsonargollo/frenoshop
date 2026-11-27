@@ -12,7 +12,7 @@ export async function generateMetadata({ searchParams }: PageProps<"/search">): 
   return {
     robots: { index: false, follow: true },
     title: q ? `Buscar: ${q}` : "Buscar",
-    description: "Busca en el menú de Casa del Camba.",
+    description: "Busca repuestos en el catálogo de FRENOSHOP.",
   };
 }
 
@@ -56,7 +56,7 @@ export default async function SearchPage({ searchParams }: PageProps<"/search">)
         </span>
         <div className="relative">
           <span className="eyebrow">Encuentra lo que buscas</span>
-          <h1 className="mt-3 font-display text-4xl text-ink sm:text-5xl">Busca en el menú</h1>
+          <h1 className="mt-3 font-display text-4xl text-ink sm:text-5xl">Busca en el catálogo</h1>
           <p className="mx-auto mt-3 max-w-md text-sm text-muted">
             Escribe un producto, una categoría o un precio — no importa si hay errores de ortografía.
           </p>
@@ -126,9 +126,9 @@ export default async function SearchPage({ searchParams }: PageProps<"/search">)
                   <h2 className="relative mt-4 font-display text-2xl text-ink">Nuestra categoría {category.name} está llegando pronto</h2>
                   <p className="relative mx-auto mt-2 max-w-md text-sm text-muted">
                     Esto se está preparando ahora. Recibe un aviso en cuanto esté disponible — o explora el
-                    menú abajo.
+                    catálogo abajo.
                   </p>
-                  <Link href={`/shop/${category.slug}`} className="relative mt-6 inline-flex rounded-full bg-accent px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-deep shadow-[0_14px_32px_-16px_rgba(255,204,4,0.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft">
+                  <Link href={`/shop/${category.slug}`} className="relative mt-6 inline-flex rounded-full bg-accent px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-deep shadow-[0_14px_32px_-16px_rgba(245,179,1,0.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft">
                     Avísame cuando llegue
                   </Link>
                 </>

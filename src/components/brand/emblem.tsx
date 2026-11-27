@@ -1,13 +1,13 @@
-// The store's brand mark — the Casa del Camba logo. `SunMark` is the line-art
-// sun from the logo, used for faint decorative watermarks where the
-// full-colour mark would be too heavy.
+// The store's brand mark — the FRENOSHOP disc icon. `SunMark` is the line-art
+// brake disc used for faint decorative watermarks where the full-colour mark
+// would be too heavy.
 
 type MarkProps = {
   size?: number;
   className?: string;
   /** Kept for call sites that still pass a colour; the logo carries its own. */
   color?: string;
-  /** Highlight used by the sun watermark (rays). */
+  /** Highlight used by the disc watermark (vents and hub). */
   accent?: string;
 };
 
@@ -15,7 +15,7 @@ export function Emblem({ size = 44, className = "" }: MarkProps) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src="/images/casadelcamba-icon.png"
+      src="/images/frenoshop-icon.png"
       alt=""
       width={size}
       height={size}
@@ -41,15 +41,23 @@ export function SunMark({
       className={className}
       aria-hidden="true"
     >
-      {/* sun disc */}
-      <circle cx="32" cy="32" r="13" stroke={color} strokeWidth="3.2" />
-      {/* rays */}
+      {/* outer disc */}
+      <circle cx="32" cy="32" r="28" stroke={color} strokeWidth="3.2" />
+      {/* friction face */}
+      <circle cx="32" cy="32" r="19" stroke={accent} strokeWidth="2.6" />
+      {/* vents */}
       <path
-        d="M32 8v7M32 49v7M8 32h7M49 32h7M15 15l5 5M44 44l5 5M49 15l-5 5M20 44l-5 5"
+        d="M32 5v6M32 53v6M5 32h6M53 32h6M13 13l4 4M47 47l4 4M51 13l-4 4M17 47l-4 4"
         stroke={accent}
-        strokeWidth="3"
+        strokeWidth="2.6"
         strokeLinecap="round"
       />
+      {/* hub + bolts */}
+      <circle cx="32" cy="32" r="7" stroke={accent} strokeWidth="3" />
+      <circle cx="32" cy="28.5" r="1.2" fill={accent} />
+      <circle cx="35" cy="32" r="1.2" fill={accent} />
+      <circle cx="32" cy="35.5" r="1.2" fill={accent} />
+      <circle cx="29" cy="32" r="1.2" fill={accent} />
     </svg>
   );
 }

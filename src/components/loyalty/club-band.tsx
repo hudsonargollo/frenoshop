@@ -13,7 +13,7 @@ export function ClubBand({ rules }: { rules: LoyaltySettings }) {
           className="pointer-events-none absolute inset-0 opacity-25"
           style={{
             background:
-              "radial-gradient(60% 120% at 15% 0%, rgba(255,224,138,0.55), transparent 60%), radial-gradient(50% 110% at 90% 100%, rgba(255,204,4,0.4), transparent 65%)",
+              "radial-gradient(60% 120% at 15% 0%, rgba(255,224,138,0.55), transparent 60%), radial-gradient(50% 110% at 90% 100%, rgba(245,179,1,0.4), transparent 65%)",
           }}
         />
         <div className="relative">
@@ -25,7 +25,7 @@ export function ClubBand({ rules }: { rules: LoyaltySettings }) {
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-sm text-light/75 sm:text-base">
             Y además {pointRuleLabel(rules)}, canjeables por regalos en nuestra tienda de premios:
-            botellas, bolsos y sorpresas para los más chicos.
+            repuestos y accesorios para tu vehículo.
           </p>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
             <Link
@@ -38,7 +38,7 @@ export function ClubBand({ rules }: { rules: LoyaltySettings }) {
               href="/shop"
               className="rounded-full border border-light/30 px-8 py-3 text-sm font-semibold text-light transition hover:border-accent hover:text-accent"
             >
-              Pedir ahora
+              Ver el catálogo
             </Link>
           </div>
         </div>

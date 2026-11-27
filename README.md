@@ -1,10 +1,9 @@
-# Casa del Camba — Tienda en línea (multi-sucursal)
+# FRENOSHOP — Tienda en línea (multi-sucursal)
 
-Tienda en línea de **Casa del Camba**, restaurante de comida típica cruceña
-fundado en **1986**, con **13 sucursales** en Santa Cruz, Bolivia. Catálogo
-compartido con **stock por sucursal**, entrega a domicilio o retiro en tienda,
-y un panel donde cada sucursal gestiona sus propios pedidos con sus propias
-credenciales.
+Tienda en línea de **FRENOSHOP**, tienda de repuestos de frenos en Santa Cruz,
+Bolivia. Local en Feria Barrio Lindo, Acronal B, pasillo D 316. Catálogo
+de pastillas, discos, cilindros, kits y líquidos para frenos, con envíos a
+domicilio o retiro en tienda y un panel para gestionar pedidos e inventario.
 
 ## Stack
 
@@ -24,8 +23,8 @@ credenciales.
 2. **Configurar la base de datos**
    Copia `.env.example` a `.env` y ajusta las conexiones:
    ```env
-   DATABASE_URL="postgresql://USER:PASSWORD@HOST:5432/casadelcamba?schema=public"
-   DIRECT_URL="postgresql://USER:PASSWORD@HOST:5432/casadelcamba?schema=public"
+   DATABASE_URL="postgresql://USER:PASSWORD@HOST:5432/frenoshop?schema=public"
+   DIRECT_URL="postgresql://USER:PASSWORD@HOST:5432/frenoshop?schema=public"
    ```
 
 3. **Aplicar el esquema y cargar datos**
@@ -49,7 +48,7 @@ credenciales.
 | `npm run build` | Build de producción |
 | `npm run db:migrate` | Crea/aplica migraciones en desarrollo |
 | `npm run db:push` | Empuja el esquema sin migración |
-| `npm run db:seed` | Menú (58 platos), 13 sucursales, ajustes y Club Camba |
+| `npm run db:seed` | 6 categorías, 1 local, ajustes; catálogo vacío y Club Frenoshop pausado |
 | `npm run db:studio` | Prisma Studio |
 | `npm run db:create-admin` | Crea/actualiza el administrador desde `ADMIN_EMAIL` / `ADMIN_PASSWORD` |
 | `npm run db:copy` | Copia datos entre dos bases (ver `prisma/copy-data.ts`) |
@@ -63,8 +62,7 @@ credenciales.
 - El **stock vive en `BranchStock`** (`branchId + productId`), y la tienda resuelve
   la disponibilidad para la sucursal elegida por el cliente.
 - Cada `Order` pertenece a una sucursal y registra `fulfillment` (`DELIVERY` o
-  `PICKUP`). El número de pedido empieza con el código de la sucursal
-  (`CC01-241105-A1B2C3D4`).
+  El número de pedido empieza con el código del local (`FS01-241105-A1B2C3D4`).
 - Los usuarios `STAFF` están ligados a una sucursal (`User.branchId`); los
   `ADMIN` son globales.
 
@@ -80,10 +78,10 @@ credenciales.
 | `/cart` | Carrito |
 | `/checkout` | Entrega o retiro + método de pago |
 | `/checkout/success` | Confirmación |
-| `/club-camba` | Club Camba — sellos, puntos y recompensas |
+| `/club-camba` | Club Frenoshop — pausado (sin productos) |
 
-La sucursal elegida se guarda en la cookie `cc_branch` (180 días). Sin sucursal
-se puede navegar, pero al iniciar el pago la tienda pide elegir una.
+El local elegido se guarda en la cookie `fs_branch` (180 días). Sin local
+se puede navegar, pero al iniciar el pago la tienda pide elegir uno.
 
 ## Panel administrativo
 
@@ -112,19 +110,19 @@ de intentos.
 
 **VPS (systemd + nginx):** el build genera un servidor standalone
 (`output: "standalone"`). `scripts/deploy.sh` compila, sincroniza a
-`/var/www/casadelcamba` y reinicia `casadelcamba.service`. Usa **una sola instancia**
+`/var/www/frenoshop` y reinicia `frenoshop.service`. Usa **una sola instancia**
 de larga duración (las alertas de pedidos y el rate limit son en memoria).
 
 **Docker:**
 ```bash
-docker build -t casadelcamba .
-docker run -p 3000:3000 --env-file .env -v casadelcamba-uploads:/app/uploads casadelcamba
+docker build -t frenoshop .
+docker run -p 3000:3000 --env-file .env -v frenoshop-uploads:/app/uploads frenoshop
 ```
 
 En una base nueva:
 ```bash
 npx prisma migrate deploy
-npm run db:seed        # opcional: menú + sucursales
+`npm run db:seed`        # opcional: categorías + local
 npm run db:create-admin
 ```
 
@@ -135,5 +133,5 @@ npm run db:create-admin
 
 - Despliegue en producción: [`docs/DEPLOY.md`](docs/DEPLOY.md).
 - El seed (`prisma/seed.ts`) y los datos de respaldo sin base de datos
-  (`src/lib/sample-data.ts`) reflejan el menú completo: 10 categorías y
-  58 platos con fotos en `public/imgs/menu/`.
+  (`src/lib/sample-data.ts`) reflejan 6 categorías de frenos y un catálogo
+  vacío: los productos se cargan desde Admin → Products.

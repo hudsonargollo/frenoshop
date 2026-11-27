@@ -8,7 +8,7 @@
  */
 export type LoyaltySettings = {
   enabled: boolean;
-  /** Brand-facing name, e.g. "Club Camba". */
+  /** Brand-facing name, e.g. "Club Frenoshop". */
   name: string;
   stampsToFree: number;
   /** What earns a stamp: the whole menu, listed categories, or listed products. */

@@ -1,6 +1,6 @@
 // Options for the custom-order request form (shared by the form + server action).
-export const PIECE_TYPES = ["Platos típicos", "Parrilla", "Empanadas", "Postres", "Bebidas", "Pedido para evento", "Otro"] as const;
-export const FINISHES = ["Individual", "Para 2 personas", "Para 4 personas", "Bandeja para compartir", "No estoy seguro"] as const;
+export const PIECE_TYPES = ["Pastillas de freno", "Discos y tambores", "Cilindros y bombas", "Kits y sellos", "Mangueras y líquidos", "Accesorios", "Otro"] as const;
+export const FINISHES = ["Delantero", "Trasero", "Juego completo (4 ruedas)", "No estoy seguro"] as const;
 export const BUDGETS = ["Menos de Bs 100", "Bs 100 – 300", "Bs 300 – 600", "Bs 600 o más", "No estoy seguro"] as const;
 
 // Reference photos attached to a custom-order request.

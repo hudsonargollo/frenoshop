@@ -7,12 +7,12 @@ import { EmailLink } from "@/components/email-link";
 
 export const metadata: Metadata = {
   title: "Contacto",
-  description: "¿Dudas sobre tu pedido, delivery o un pedido para tu evento? Escríbenos y te respondemos.",
+  description: "¿Dudas sobre un repuesto o compatibilidad? Escríbenos y te respondemos.",
   alternates: { canonical: "/contact" },
 };
 
 const TOPICS: Record<string, string> = {
-  custom: "Pedido para evento",
+  custom: "Consulta de repuesto",
 };
 
 export default async function ContactPage({ searchParams }: PageProps<"/contact">) {
@@ -30,8 +30,8 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
         <h1 className="mt-2 font-display text-4xl font-semibold text-ink sm:text-5xl">Contacto</h1>
         <p className="mx-auto mt-4 max-w-xl text-muted">
           {topic === "custom"
-            ? "Cuéntanos qué pedido necesitas — cuántas personas, qué te gustaría y para qué fecha — y nuestro equipo te contactará lo antes posible para coordinar disponibilidad, opciones y precio."
-            : "¿Dudas sobre tu pedido, delivery o un pedido para tu evento? Escríbenos, te respondemos con gusto."}
+            ? "Cuéntanos qué repuesto necesitas — marca, modelo, año y motor — y nuestro equipo te contactará lo antes posible para confirmar disponibilidad y precio."
+            : "¿Dudas sobre un repuesto o su compatibilidad? Escríbenos, te respondemos con gusto."}
         </p>
       </div>
 
@@ -49,7 +49,7 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
           )}
           {CONTACT.phone && (
             <div>
-              <h3 className="eyebrow mb-2">Teléfono</h3>
+              <h3 className="eyebrow mb-2">Teléfono / WhatsApp</h3>
               <a href={CONTACT.phoneHref} className="text-ink hover:text-accent-strong">
                 {CONTACT.phone}
               </a>
@@ -69,7 +69,13 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
           </div>
           <div>
             <h3 className="eyebrow mb-2">Ubicación</h3>
-            <p className="text-ink">{CONTACT.city}</p>
+            <p className="text-ink">Feria Barrio Lindo, Acronal B, pasillo D 316 · {CONTACT.city}</p>
+          </div>
+          <div>
+            <h3 className="eyebrow mb-2">Instagram</h3>
+            <a href="https://www.instagram.com/frenoshop_bo/" target="_blank" rel="noopener noreferrer" className="text-ink hover:text-accent-strong">
+              @frenoshop_bo →
+            </a>
           </div>
         </aside>
       </div>

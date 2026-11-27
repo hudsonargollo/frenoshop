@@ -4,33 +4,33 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /* ============================================================
-   Casa del Camba — brand theme
-   Camba green + sun yellow + warm near-black, taken from the
-   client's "La Casa del Camba" logo (palm, sun and orange roof).
+   FRENOSHOP — brand theme
+   Negro + amarillo/dorado, tomados del logo (placa negra con
+   letras doradas y disco de freno).
    ============================================================ */
 @theme {
-  /* Brand — camba green (darkened from the logo's #76b72d for white text) */
-  --color-brand: #4c8a23;      /* primary green */
-  --color-brand-dark: #3c6e1b;
-  --color-brand-deep: #1d3a0e; /* dark green surfaces */
-  --color-panel: #eef6e4;      /* soft green panel */
-  --color-panel-2: #dcecc6;
+  /* Brand — near-black surfaces (logo plate) */
+  --color-brand: #121212;
+  --color-brand-dark: #1a1a1a;
+  --color-brand-deep: #080808;
+  --color-panel: #fff7e0;      /* soft gold panel */
+  --color-panel-2: #ffefc2;
 
-  /* Accent — sun yellow (buttons stay bright, never mustard) */
-  --color-accent: #ffcc04;
-  --color-accent-soft: #ffe066;
-  --color-accent-strong: #9a6b00; /* readable gold for text on light */
-  --color-gold: #ffe066;
+  /* Accent — brake-disc gold (buttons stay bright, never mustard) */
+  --color-accent: #f5b301;
+  --color-accent-soft: #ffd85c;
+  --color-accent-strong: #8a5b00; /* readable gold for text on light */
+  --color-gold: #ffd85c;
 
   /* Neutrals — warm white */
-  --color-ink: #1a1f14;
-  --color-cream: #f7f8f1;
-  --color-cream-soft: #fbfcf6;
-  --color-sand: #eff3e4;
+  --color-ink: #141414;
+  --color-cream: #faf8f3;
+  --color-cream-soft: #fdfbf6;
+  --color-sand: #f3efe4;
   --color-surface: #ffffff;    /* cards / inputs (flips in dark mode) */
-  --color-light: #f9faf4;      /* fixed white — text on dark surfaces (never flips) */
-  --color-muted: #66735a;      /* muted text on light */
-  --color-muted-dark: #c6d8b0; /* muted text on dark green */
+  --color-light: #fdfbf6;      /* fixed white — text on dark surfaces (never flips) */
+  --color-muted: #6b675e;      /* muted text on light */
+  --color-muted-dark: #d8cfae; /* muted text on dark surfaces */
 
   /* Form feedback */
   --color-ok: #2f7d5c;
@@ -43,44 +43,44 @@
 
 :root {
   color-scheme: light;
-  --background: #f7f8f1;
-  --foreground: #1a1f14;
-  --line: rgba(26, 31, 20, 0.14);
-  --line-strong: rgba(26, 31, 20, 0.34);
-  --frame: rgba(26, 31, 20, 0.55);
+  --background: #faf8f3;
+  --foreground: #141414;
+  --line: rgba(20, 20, 20, 0.14);
+  --line-strong: rgba(20, 20, 20, 0.34);
+  --frame: rgba(20, 20, 20, 0.55);
 }
 
 /* ---------- Dark theme (toggle sets data-theme="dark" on <html>) ---------- */
 :root[data-theme="dark"] {
   color-scheme: dark;
 
-  --color-brand: #76b72d;
-  --color-brand-dark: #6aa328;
-  --color-brand-deep: #16290b;
-  --color-panel: #151d0f;
-  --color-panel-2: #1b2613;
+  --color-brand: #f5b301;
+  --color-brand-dark: #d99a00;
+  --color-brand-deep: #0b0b0b;
+  --color-panel: #151515;
+  --color-panel-2: #1c1c1c;
 
-  --color-accent: #ffcc04;
-  --color-accent-soft: #ffe066;
+  --color-accent: #f5b301;
+  --color-accent-soft: #ffd85c;
   --color-accent-strong: #f0b400;
-  --color-gold: #ffe066;
+  --color-gold: #ffd85c;
 
-  --color-ink: #eef4e4;
-  --color-cream: #10160b;
-  --color-cream-soft: #151c0f;
-  --color-sand: #1c2613;
-  --color-surface: #161e10;
-  --color-light: #f9faf4;
-  --color-muted: #a4b691;
-  --color-muted-dark: #c6d8b0;
+  --color-ink: #f5f1e6;
+  --color-cream: #0d0d0d;
+  --color-cream-soft: #121212;
+  --color-sand: #1a1a1a;
+  --color-surface: #151515;
+  --color-light: #fdfbf6;
+  --color-muted: #b8b0a0;
+  --color-muted-dark: #d8cfae;
   --color-ok: #6cc59a;
   --color-bad: #f08a80;
 
-  --background: #10160b;
-  --foreground: #eef4e4;
-  --line: rgba(238, 244, 228, 0.14);
-  --line-strong: rgba(238, 244, 228, 0.30);
-  --frame: rgba(255, 204, 4, 0.45);
+  --background: #0d0d0d;
+  --foreground: #f5f1e6;
+  --line: rgba(245, 241, 230, 0.14);
+  --line-strong: rgba(245, 241, 230, 0.30);
+  --frame: rgba(245, 179, 1, 0.45);
 }
 
 * {
@@ -142,7 +142,7 @@ p {
 
 /* Brand gradient text utility */
 .brand-text {
-  background: linear-gradient(120deg, var(--color-brand), #76b72d 55%, var(--color-accent-strong));
+  background: linear-gradient(120deg, var(--color-brand), #f5b301 55%, var(--color-accent-strong));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

@@ -11,18 +11,18 @@ import { useBranchPicker } from "./branch-picker";
 
 const NAV = [
   { label: "Inicio", href: "/" },
-  { label: "Menú", href: "/shop" },
-  { label: "Sucursales", href: "/sucursal" },
+  { label: "Catálogo", href: "/shop" },
+  { label: "Local", href: "/sucursal" },
   { label: "Nosotros", href: "/about" },
-  { label: "Pedidos para eventos", href: "/custom" },
+  { label: "Repuestos a pedido", href: "/custom" },
   { label: "Contacto", href: "/contact" },
 ];
 
 const HELP = [
   { label: "Mi cuenta", href: "/account" },
   { label: "Rastrear pedido", href: "/account/orders" },
-  { label: "Delivery y devoluciones", href: "/shipping" },
-  { label: "Ingredientes y alergias", href: "/care" },
+  { label: "Envíos y devoluciones", href: "/shipping" },
+  { label: "Garantía y compatibilidad", href: "/care" },
   { label: "Preguntas frecuentes", href: "/faq" },
 ];
 
@@ -109,7 +109,7 @@ export function MobileMenu({
         <div className="flex items-center justify-between border-b border-[var(--line)] bg-brand px-5 py-4">
           <span className="flex items-center gap-2 text-light">
             <Emblem size={24} accent="var(--color-accent-soft)" />
-            <span className="font-display text-lg font-extrabold tracking-tight">Casa del Camba</span>
+            <span className="font-display text-lg font-extrabold tracking-tight">FRENOSHOP</span>
           </span>
           <button
             onClick={() => setOpen(false)}
@@ -156,10 +156,10 @@ export function MobileMenu({
             </span>
             <span className="min-w-0 flex-1">
               <span className="block text-[0.62rem] font-bold uppercase tracking-[0.16em] text-muted">
-                Tu sucursal
+                Tu local
               </span>
               <span className="block truncate text-sm font-semibold text-ink">
-                {branchName ?? "Elegir sucursal"}
+                {branchName ?? "Elegir local"}
               </span>
             </span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="shrink-0 text-brand" aria-hidden="true">
@@ -216,7 +216,7 @@ export function MobileMenu({
             onClick={() => setOpen(false)}
             className="block rounded-full bg-accent px-6 py-3 text-center text-sm font-bold text-brand-deep transition hover:bg-accent-soft"
           >
-            Ver el menú
+            Ver catálogo
           </Link>
         </div>
           </aside>

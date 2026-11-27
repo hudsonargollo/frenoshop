@@ -10,7 +10,7 @@ import type {
 } from "@/lib/admin-data";
 
 const card =
-  "rounded-2xl border border-[var(--line)] bg-surface p-5 shadow-[0_10px_30px_-22px_rgba(29,58,14,0.4)] sm:p-6";
+  "rounded-2xl border border-[var(--line)] bg-surface p-5 shadow-[0_10px_30px_-22px_rgba(8,8,8,0.4)] sm:p-6";
 
 function emptyNote(text: string) {
   return (

@@ -1,7 +1,7 @@
 import type { CategoryView, ProductView } from "./types";
 
 // Storefront search: typo-tolerant, plural-aware, understands everyday Spanish
-// words ("empanada", "majao", "gaseosa"), price phrases ("hasta 50") and
+// words ("pastillas", "discos", "DOT 4"), price phrases ("hasta 50") and
 // offer words ("oferta"). Pure — runs on the product list in memory, which is
 // fine for a restaurant menu.
 
@@ -9,9 +9,9 @@ export type SearchCategory = CategoryView & { count: number };
 
 export type SearchResult = {
   products: ProductView[];
-  /** Category the query asked for (e.g. "empanadas", "sopa" → Empanadas / Sopas). */
+  /** Category the query asked for (e.g. "pastillas", "discos" → Pastillas / Discos). */
   category: SearchCategory | null;
-  /** Typos we read past: "empananda" → "empanada". */
+  /** Typos we read past: "pastillas" → "pastillas". */
   corrections: { from: string; to: string }[];
   minPrice: number | null;
   maxPrice: number | null;
@@ -27,8 +27,8 @@ const STOP = new Set(
 /** Everyday / colloquial words → the word the menu uses. */
 const ALIASES: Record<string, string> = {
   papas: "papa", papafrita: "papa", papafritas: "papa", fritas: "papa",
-  postres: "postre", helado: "postre", torta: "postre", dulce: "postre", dulces: "postre",
-  gaseosa: "bebida", refresco: "bebida", soda: "bebida", jugo: "bebida", agua: "bebida",
+  pastillas: "pastillas", pastilla: "pastillas", frenos: "pastillas", freno: "pastillas",
+  discos: "discos", disco: "discos", tambores: "tambores", tambor: "tambores",
   guarnicion: "agregado", guarniciones: "agregado", acompanamiento: "agregado",
   infantil: "nino", kids: "nino",
   combo: "combo", combos: "combo",
@@ -37,15 +37,15 @@ const ALIASES: Record<string, string> = {
 /** Words that point at a category even when the product name doesn't use them. */
 const CATEGORY_HINTS: Record<string, string> = {
   entrada: "entrada",
-  empanada: "empanada",
+  cilindros: "cilindros", cilindro: "cilindros", bombas: "bombas", bomba: "bombas",
   sopa: "sopa",
-  plato: "plato",
+  kits: "kits", kit: "kits", sellos: "sellos", sello: "sellos",
   tipico: "tipico",
-  parrilla: "parrilla",
+  mangueras: "mangueras", manguera: "mangueras", liquido: "líquidos", líquidos: "líquidos",
   vegetariano: "vegetariano",
   nino: "nino",
   agregado: "agregado",
-  postre: "postre",
+  accesorios: "accesorios", accesorio: "accesorios",
   bebida: "bebida",
 };
 
@@ -58,7 +58,7 @@ function fold(s: string): string {
   return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 }
 
-/** empanadas → empanada, papas → papa, combos → combo. */
+/** pastillas → pastilla, discos → disco, kits → kit. */
 function singular(w: string): string {
   if (w.length > 3 && w.endsWith("s") && !w.endsWith("ss")) return w.slice(0, -1);
   return w;
@@ -176,7 +176,7 @@ export function searchCatalog(
     return t;
   });
 
-  // A word that names a category ("empanada", "sopa", "postres").
+  // A word that names a category ("pastillas", "discos", "kits").
   let category: SearchCategory | null = null;
   for (const t of fixed) {
     const target = CATEGORY_HINTS[t] ?? t;
@@ -199,7 +199,7 @@ export function searchCatalog(
     let matched = 0;
     for (const t of fixed) {
       const isCategoryWord = (CATEGORY_HINTS[t] ?? t) === categoryWord;
-      // "papa" shouldn't pull in a plato whose description mentions papas.
+      // "kit" shouldn't pull in a product whose description mentions kits.
       const usable = isCategoryWord && p.category.slug !== category!.slug ? fields.slice(0, 3) : fields;
       let best = 0;
       for (const f of usable) for (const w of f.words) best = Math.max(best, similarity(t, w) * f.weight);
